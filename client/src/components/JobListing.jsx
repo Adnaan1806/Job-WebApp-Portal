@@ -1,11 +1,13 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Appcontext } from '../context/AppContext';
-import { assets, JobCategories, JobLocations, jobsData } from '../assets/assets';
+import { assets, JobCategories, JobLocations } from '../assets/assets';
 import JobCard from './JobCard';
 
 const JobListing = () => {
 
-const { searchFiler, isSearched, setSearchFilter } = useContext(Appcontext);
+const { searchFiler, isSearched, setSearchFilter, jobs } = useContext(Appcontext);
+
+const [showFilter, setShowFilter] = useState(false);
 
   return (
     <div className='container 2xl:px-20 mx-auto flex flex-col lg:flex-row max-lg:space-y-8 py-8'>
@@ -34,9 +36,14 @@ const { searchFiler, isSearched, setSearchFilter } = useContext(Appcontext);
                    </>
                )
             }
+
+               <button onClick={e => setShowFilter(prev => !prev)} className='px-6 py-1.5 rounded border border-gray-400 lg:hidden'>
+                {showFilter ? 'Close' : 'Filters'}
+               </button>
+
             {/* job type filter */}
 
-              <div className='max-lg:hidden'>
+              <div className={showFilter ? "" : "max-lg:hidden"}>
                 <h4 className='font-medium text-lg py-1'>Search by Categories</h4>
                 <ul className='space-y-4 text-gray-600'>
                     {
@@ -52,7 +59,7 @@ const { searchFiler, isSearched, setSearchFilter } = useContext(Appcontext);
 
               {/* job location filter */}
 
-              <div className='max-lg:hidden'>
+              <div className={showFilter ? "" : "max-lg:hidden"}>
                 <h4 className='font-medium text-lg py-4 pt-14'>Search by Locations</h4>
                 <ul className='space-y-4 text-gray-600'>
                     {
@@ -75,7 +82,7 @@ const { searchFiler, isSearched, setSearchFilter } = useContext(Appcontext);
             <p className='mb-8'>Get your desired job from top companies</p>
 
             <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4'>
-               {jobsData.map((job,index) => (
+               {jobs.map((job,index) => (
                 <JobCard key={index} job={job} />
                ))}
             </div>
