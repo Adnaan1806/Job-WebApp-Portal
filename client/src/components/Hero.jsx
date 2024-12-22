@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useContext, useRef } from "react";
 import { assets } from "../assets/assets";
+import { Appcontext } from "../context/AppContext";
 
 const Hero = () => {
+  const { setSearchFilter, setIsSearched } = useContext(Appcontext);
+
+  const titleRef = useRef(null);
+  const locationRef = useRef(null);
+
+  const onSearch = () => {
+    setSearchFilter({
+      title: titleRef.current.value,
+      location: locationRef.current.value,
+    });
+    setIsSearched(true);
+  };
+
   return (
     <div className="container 2xl:px-20 mx-auto my-10">
       <div className="bg-gradient-to-r from-purple-800 to-purple-950 text-white py-16 text-center mx-2 rounded-xl">
@@ -19,6 +33,7 @@ const Hero = () => {
               type="text"
               placeholder="Search for jobs"
               className="max-sm:text-xs p-2 rounded outline-none w-full"
+              ref={titleRef}
             />
           </div>
           <div className="flex items-center">
@@ -27,9 +42,13 @@ const Hero = () => {
               type="text"
               placeholder="Location"
               className="max-sm:text-xs p-2 rounded outline-none w-full"
+              ref={locationRef}
             />
           </div>
-          <button className="bg-pink-600 px-6 py-2 rounded text-white m-1 cursor-pointer hover:bg-pink-500 transition-all duration-300">
+          <button
+            onClick={onSearch}
+            className="bg-pink-600 px-6 py-2 rounded text-white m-1 cursor-pointer hover:bg-pink-500 transition-all duration-300"
+          >
             Search
           </button>
         </div>
