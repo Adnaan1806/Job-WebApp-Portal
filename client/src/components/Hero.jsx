@@ -55,14 +55,14 @@ const Hero = () => {
       </div>
 
       <div className="border border-gray-300 shadow-md mx-2 mt-5 p-6 rounded-md flex">
-        <div className="flex justify-center gap-2 lg:gap-14 flex-wrap">
+        <div className="flex justify-center gap-2 lg:gap-20 flex-wrap">
           <p className="font-medium">Trusted by</p>
-          <img className="h-6" src={assets.microsoft_logo} alt="" />
-          <img className="h-6" src={assets.walmart_logo} alt="" />
-          <img className="h-6" src={assets.accenture_logo} alt="" />
-          <img className="h-6" src={assets.samsung_logo} alt="" />
-          <img className="h-6" src={assets.amazon_logo} alt="" />
-          <img className="h-6" src={assets.adobe_logo} alt="" />
+          <img className="h-7" src={assets.microsoft_logo} alt="" />
+          <img className="h-7" src={assets.walmart_logo} alt="" />
+          <img className="h-7" src={assets.accenture_logo} alt="" />
+          <img className="h-7" src={assets.samsung_logo} alt="" />
+          <img className="h-7" src={assets.amazon_logo} alt="" />
+          <img className="h-7" src={assets.adobe_logo} alt="" />
         </div>
       </div>
     </div>
