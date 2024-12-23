@@ -3,7 +3,7 @@ import { assets } from '../assets/assets'
 
 const JobCard = ({job}) => {
   return (
-    <div className='border p-6 shadow rounded'>
+    <div className='border p-6 transition-all duration-300 transform hover:scale-105 hover:shadow-lg rounded-lg'>
         <div className='flex justify-between items-center'>
             <img className='h-8' src={assets.company_icon} alt="" />
         </div>
@@ -14,8 +14,8 @@ const JobCard = ({job}) => {
         </div>
         <p className='text-gray-500 text-sm mt-4' dangerouslySetInnerHTML={{__html:job.description.slice(0,150)}}></p>
         <div className='mt-4 flex gap-4 text-sm'>
-            <button className='bg-blue-600 text-white px-4 py-2 rounded'>Apply Now</button>
-            <button className='text-gray-500 border border-gray-500 rounded px-4 py-2'>Learn More</button>
+            <button className='bg-red-600 text-white px-4 py-2 rounded transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:font-semibold'>Apply Now</button>
+            <button className='text-gray-500 border border-gray-300 rounded transition-all duration-300 hover:bg-gray-50 px-4 py-2'>Learn More</button>
         </div>
     </div>
   )
