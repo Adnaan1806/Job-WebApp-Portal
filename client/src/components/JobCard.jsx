@@ -1,7 +1,11 @@
 import React from "react";
 import { assets } from "../assets/assets";
+import { useNavigate } from "react-router-dom";
 
 const JobCard = ({ job }) => {
+
+  const navigate = useNavigate();
+
   return (
     <div className="border p-6 transition-all duration-300 transform hover:scale-105 hover:shadow-lg rounded-lg">
       <div className="flex justify-between items-center">
@@ -21,10 +25,10 @@ const JobCard = ({ job }) => {
         dangerouslySetInnerHTML={{ __html: job.description.slice(0, 150) }}
       ></p>
       <div className="mt-4 flex gap-3 text-sm">
-        <button className="bg-red-600 text-white px-4 py-2 rounded transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:font-semibold">
+        <button onClick={() => {navigate(`/apply-job/${job._id}`); scrollTo(0,0)}} className="bg-red-600 text-white px-4 py-2 rounded transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:font-semibold">
           Apply Now
         </button>
-        <button className="text-gray-500 border border-gray-300 rounded transition-all duration-300 hover:bg-gray-50 px-4 py-2">
+        <button onClick={() => {navigate(`/apply-job/${job._id}`); scrollTo(0,0)}} className="text-gray-500 border border-gray-300 rounded transition-all duration-300 hover:bg-gray-50 px-4 py-2">
           Learn More
         </button>
       </div>
